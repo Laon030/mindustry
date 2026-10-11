@@ -68,6 +68,12 @@ export AGENTBRIDGE_SERVER_JAR='/absolute/path/to/v159.7/server-release.jar'
 
 이 하위 `.github/workflows/gradle.yml`은 standalone 원본의 테스트 계약을 보존한 템플릿이다. 저장소 루트 workflow를 변경하지 않았으므로 이 패키지의 GitHub CI가 자동 실행되는 것은 아니다. 새 CI 연결은 별도 작업이다.
 
+## SourceTree에서의 작업 연결
+
+현재 개발자의 두 클론은 SourceTree bookmark에 등록되어 있다. Mindustry는 `feature/agentbridge-handoff`가 `origin/feature/agentbridge-handoff`를 추적하고, 기본 push 대상은 개인 `origin`이다. 팀/공식 remote의 push URL은 로컬에서 차단되어 있다. 이 설정은 `.git/config`에 있으므로 다른 컴퓨터에서 clone하면 별도로 설정해야 한다.
+
+개발자는 개인 feature branch에서 구현·검증한 뒤 개인 포크에 checkpoint를 저장한다. 팀 integration 계약과 범위가 합의되기 전에는 상위 engine/기찬님 코드를 변경하지 않는다. 지금의 runtime은 독립 package이며 Git 연결 완료를 게임/연구 완료로 해석하지 않는다.
+
 ## 다음 검토
 
 기찬님과 각 패키지를 별도로 실행하고 관측·action 접수/완료·시간 진행·실패/승패 정의를 맞춘다. 통합 또는 팀 PR은 그 뒤 별도 합의로 진행한다. 이 개인 포크는 공개되므로 리뷰어가 읽기 위해 collaborator 초대를 받을 필요가 없다.

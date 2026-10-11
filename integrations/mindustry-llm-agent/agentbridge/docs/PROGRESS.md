@@ -2,6 +2,13 @@
 
 Updated: 2026-10-11 (Asia/Seoul)
 
+## 2026-10-11 SourceTree와 개인 포크 작업 연결 완료
+
+- **VERIFIED — 로컬 설정:** 공식 Atlassian 배포의 SourceTree 4.2.19를 설치했고 checksum·개발자 서명·macOS 공증 검사를 통과했다. 앱 실행과 `browser.plist`의 BAR/Mindustry 두 클론 bookmark 경로를 확인했다. Bitbucket 저장소 연결은 이 GitHub 작업에 필요하지 않다.
+- 처음 single-branch clone의 `origin` fetch 범위가 `develop`만 포함해 업로드한 feature branch를 SourceTree가 원격 추적할 수 없었다. `feature/agentbridge-handoff`를 fetch 범위에 추가하고, 같은 이름의 `origin` branch를 tracking하도록 설정했다. 변경 전 개인 remote SHA를 확인했고 연결 후 local/remote **0 ahead / 0 behind**를 확인했다.
+- 두 클론에 local `remote.pushDefault=origin`, `push.default=simple`을 설정했다. `upstream`과 `canonical` push URL은 계속 `DISABLED`다. 이 단계는 Git 연결/문서 정리이며 source/runtime/API 변경은 없다. 앞선 121개 Python 테스트와 Java 17 빌드 결과를 유지하며 이번 단계에서 새 게임 검증을 수행하지 않았다.
+- 작업 방식은 팀 정보를 fetch → 별도 개인 feature branch에서 구현/검증 → checkpoint commit → 개인 origin push → 상호 검토 순서다. 자동 팀 merge·팀 PR·DM 발송은 이번 범위 밖이다. 현재 demo GUI/native Core 승패 및 연구 live v2의 미검증 상태는 그대로다.
+
 ## 2026-10-11 개인 Mindustry 포크의 독립 AgentBridge 인계
 
 - **범위/출처:** 사용자가 개인 포크에만 업로드하도록 허가했다. 팀 `develop=e2f588543904bd327a60bd1f8806f085e1dba1d2`에서 `feature/agentbridge-handoff`를 만들고, 원본 `Laon030/capstone-project=06f6f7fbd5f788f8914a92b80121eaaa35d5b8f3`의 Git 추적 파일 102개를 `integrations/mindustry-llm-agent/agentbridge`로 복사했다. 기존 원본 checkout과 연구 branch는 보존한다.
