@@ -7,11 +7,12 @@ Updated: 2026-10-11 (Asia/Seoul)
 - **범위/출처:** 사용자가 개인 포크에만 업로드하도록 허가했다. 팀 `develop=e2f588543904bd327a60bd1f8806f085e1dba1d2`에서 `feature/agentbridge-handoff`를 만들고, 원본 `Laon030/capstone-project=06f6f7fbd5f788f8914a92b80121eaaa35d5b8f3`의 Git 추적 파일 102개를 `integrations/mindustry-llm-agent/agentbridge`로 복사했다. 기존 원본 checkout과 연구 branch는 보존한다.
 - **격리:** 새로운 패키지 밖의 engine/Gradle/settings/CI 및 기찬님 integration 파일은 수정하지 않는다. 상위 build에 자동 등록하지 않는다. 개인 `origin=Laon030/mindustry`만 push 대상이며 로컬 `upstream`과 `canonical`의 push URL은 `DISABLED`로 설정했다. 팀 PR과 develop push는 이번 범위 밖이다.
 - **IMPLEMENTED — 실행 경로 준비:** demo launcher에 `JAVA_HOME`과 `AGENTBRIDGE_SERVER_JAR` 환경변수 override를 추가했다. 미지정 시 기존 경로를 유지한다. 정상 게임 실행·기존 Qwen 경로·duel 모델·Memory Contract는 변경하지 않았다. README와 [FORK_HANDOFF.md](FORK_HANDOFF.md)에 하위 폴더 기준 clone/test/build, 최초 dependency 준비, 포트 충돌, fixture·검증 한계와 nested CI 템플릿의 비활성 상태를 설명했다.
-- **VERIFIED_TEST — 이번 세션:** 독립 클론의 패키지 위치에서 CPython 3.13.5 전체 단위 테스트 **121/121 OK**. 환경/metadata 확인, compileall과 경로 override·missing-path preflight smoke도 통과했다. 오류 주입 테스트의 출력은 실제 서버 장애가 아니다. 게임/모델/server는 시작하지 않았다.
+- **VERIFIED_TEST — 이번 세션:** 독립 클론의 패키지 위치에서 CPython 3.13.5 전체 단위 테스트 **121/121 OK**. 환경/metadata 확인, compileall과 경로 override·missing-path preflight smoke도 통과했다. 오류 주입 테스트의 출력은 실제 서버 장애가 아니다. 게임/모델/server는 시작하지 않았다. 원본 Java 파일의 기존 trailing whitespace는 API source hash와 원본 byte 보존을 위해 유지했고, 그 항목만 제외한 staged whitespace 검사를 통과했다.
 - **VERIFIED_BUILD — 이번 세션:** Java 17 Gradle offline `jar` 빌드 성공. 최종 폴더 `/Users/andrew/capstone/mindustry-laon`에서도 재빌드 성공; JAR SHA-256 `a5e99016d802f0aef5897096e9c9f06e7bfd3a078d253ebe617dde720da53912`. 빌드 성공은 실제 게임 재검증이 아니다.
 - **제외/한계:** .git 이력, 원본 save/logs, runtime/build 파일, 서버 JAR, 모델과 인증정보는 snapshot에서 제외했다. 기본 HTTP는 localhost 전용이다. 최신 GUI, native Core 승패, v2 live 통합과 scratchpad 성능 효과는 이번에도 미검증이다.
 - 먼저 이미 있는 개인 BAR 포크 `Laon030/Beyond-All-Reason`를 `/Users/andrew/capstone/Beyond-All-Reason`에 소스 작업용 sparse clone으로 준비한 뒤 이 인계를 재개했다. BAR 게임 실행용 대용량 자산은 내려받지 않았고 소스 변경/push는 수행하지 않았다.
-- 다음 단계: 개인 작업 브랜치의 원격 commit과 추가 파일 범위를 확인하고, 기찬님과 각 runtime을 독립 실행·교차 검토한 뒤 통합 계약을 협의한다.
+- **VERIFIED_REMOTE:** 최초 패키지 commit `daa1e1fd95e1ad9cddbb5734fc236ea42189f31e`를 개인 `origin`의 `feature/agentbridge-handoff`에 push하고 `git ls-remote`로 확인했다. 개인 `develop=e2f5885`는 그대로이며, 기준 대비 103개 추가 파일 모두 새 패키지 안에 있다. 이 후속 기록도 같은 개인 작업 브랜치에만 반영한다. 팀 PR은 생성하지 않았다.
+- 다음 단계: 기찬님과 각 runtime을 독립 실행·교차 검토한 뒤 통합 계약을 협의한다.
 
 ## 2026-10-08 개인 GitHub backup 및 상호 검토 준비
 
